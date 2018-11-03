@@ -9,7 +9,7 @@ public class Main {
     int startValue = 10;
     String startStringValue = "start";
 
-    CircularBufferImpl<Integer> intBufferArray = new CircularBufferImpl<>(limit);
+    CircularBufferImpl<Integer> intBufferArray = new CircularBufferImpl<>(limit, Integer.class);
     System.out.println("Putting all");
     for (int i = 0; i < limit - 1; i++) {
       intBufferArray.put(startValue++);
@@ -31,14 +31,14 @@ public class Main {
     }
 
     System.out.println("Getting a buffer as a T array");
-    Integer[] arrayTypeT = intBufferArray.toArray(Integer.class);
+    Integer[] arrayTypeT = intBufferArray.toArray();
     for (Integer number : arrayTypeT
     ) {
       System.out.println(number);
     }
 
 //    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    CircularBufferImpl<String> stringBufferArray = new CircularBufferImpl<>(limit);
+    CircularBufferImpl<String> stringBufferArray = new CircularBufferImpl<>(limit, Integer.class);
 
     System.out.println("Putting all");
     for (int i = 0; i < limit - 1; i++) {
@@ -51,7 +51,7 @@ public class Main {
     stringBufferArray.get();
 
     System.out.println("Getting a buffer as a T array");
-    String[] arrayTypeT2 = stringBufferArray.toArray(String.class);
+    String[] arrayTypeT2 = stringBufferArray.toArray();
     for (String number : arrayTypeT2
     ) {
       System.out.println(number);
