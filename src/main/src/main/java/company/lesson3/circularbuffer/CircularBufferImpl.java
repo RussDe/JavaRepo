@@ -3,10 +3,7 @@ package company.lesson3.circularbuffer;
 import lombok.Data;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Conversation
@@ -80,6 +77,7 @@ public class CircularBufferImpl<T> implements CircularBuffer<T> {
         tempTail = 0;
       }
     }
+   // System.arraycopy();
     return tempArray;
   }
 
@@ -89,6 +87,7 @@ public class CircularBufferImpl<T> implements CircularBuffer<T> {
    *
    * @return
    */
+  //TODO: To reuse above method.
   public T[] toArray() {
     int tempTail = tail;
     T[] tempArray = (T[]) Array.newInstance(classT, counter);
@@ -123,6 +122,7 @@ public class CircularBufferImpl<T> implements CircularBuffer<T> {
       }
     }
     return tempList;
+    // return toArray()==null? Collections.emptyList(): Arrays.asList(toArray());
   }
 
   /**
@@ -154,12 +154,14 @@ public class CircularBufferImpl<T> implements CircularBuffer<T> {
    * @param comparator
    */
   public void sort(Comparator<? super T> comparator) {
+    //Arrays.sort();
+
   }
 
   /**
    * This method returns true if the buffer is empty, false otherwise.
    *
-   * @return
+   * @return True or False
    */
   public boolean isEmpty() {
     return (head == tail && counter == 0);
@@ -168,7 +170,7 @@ public class CircularBufferImpl<T> implements CircularBuffer<T> {
   /**
    * This method returns true if the buffer is full, false otherwise.
    *
-   * @return
+   * @return True or False
    */
   public boolean isFull() {
     return (head == tail && counter == limit);

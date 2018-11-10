@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Created by on 10/28/18.
@@ -26,7 +27,6 @@ public class CircularBufferImplTest {
     circularBuffer = new CircularBufferImpl<>(limit, Integer.class);
   }
 
-  // 1. Check if buffer is empty.
   @Test
   public void shouldBeEmpty() {
     assertThat(circularBuffer.isEmpty()).isTrue();
@@ -48,7 +48,10 @@ public class CircularBufferImplTest {
       circularBuffer.put(1);
       limit--;
     }
-    circularBuffer.put(2); // Put extra value.
+    assertThatThrownBy(() -> circularBuffer.put(2))
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("Buffer is full!");
+//    circularBuffer.put(2); // Put extra value.
   }
 
   // 4. Get exception for getting a value when buffer is empty.
@@ -60,6 +63,7 @@ public class CircularBufferImplTest {
   }
 
   // 5. Check if the head position is changed to the next one after putting a value.
+  //  NOT NEEDED
   @Test
   public void shouldHeadBeNext() {
     int previousHeadPosition = circularBuffer.getHead();
@@ -68,7 +72,8 @@ public class CircularBufferImplTest {
     assertThat(currentHeadPosition > previousHeadPosition).isTrue();
   }
 
-  // 6. Check if the head position is next to the tail one after putting a value.
+// 6. Check if the head position is next to the tail one after putting a value.
+  //  NOT NEEDED
   @Test
   public void shouldHeadBeNextToTail() {
     int tailPosition = circularBuffer.getTail();
@@ -80,7 +85,8 @@ public class CircularBufferImplTest {
     assertThat(headPosition > tailPosition).isTrue(); // Head is greater than tail.
   }
 
-  // 7. Test how pitting and getting change head and tail positions.
+// 7. Test how pitting and getting change head and tail positions.
+  //  NOT NEEDED
   @Test
   public void justTestPositions() {
     circularBuffer.put(1);       //+1 Head = 1, Tail = 0
@@ -104,12 +110,14 @@ public class CircularBufferImplTest {
     circularBuffer.put(value++);
     circularBuffer.get();
     circularBuffer.put(value++);
-    assertThat(circularBuffer.getCounter() == limit);
+    assertThat(circularBuffer.toArray()).hasSize(limit - 1);
+//    assertThat(circularBuffer.getCounter()).isEqualTo(limit - 1);
   }
 
   // 9. Check Object size is equal to buffer size.
   @Test
-  public void shouldObjectArraySizeBeEqualToBufferSize() {
+  //TODO. Write a test as Should return object array - check array size & array elements.
+  public void shouldObjectArraySizeIsEqualToBufferSize() {
     circularBuffer.put(1);
     circularBuffer.put(2);
     Object[] tempObject = circularBuffer.toObjectArray();
@@ -117,6 +125,7 @@ public class CircularBufferImplTest {
   }
 
   // 10. Check first element of Object is tail.
+  //TODO. Recode using already implemented methods!!! (no extra code to only test)
   @Test
   public void shouldObjectFirstElementBeEqualToBufferTail() {
     circularBuffer.put(1);
@@ -127,6 +136,7 @@ public class CircularBufferImplTest {
   }
 
   // 11. Check type T array size is equal to buffer size.
+  //TODO. See above.
   @Test
   public void shouldTypeTArraySizeBeEqualToBufferSize() {
     circularBuffer.put(1);
@@ -173,4 +183,9 @@ public class CircularBufferImplTest {
     int sizePrevious = circularBuffer.getCounter();
     circularBuffer.addAll(listToAddFrom);
   }
+
+  // Test to add:
+  //1. наполнение буфера элементами
+  //2. размер буфера
+
 }
