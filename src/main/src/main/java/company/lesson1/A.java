@@ -5,7 +5,7 @@ public class A extends Object {
   static int statField;
 
   static {
-    System.out.println("Static block from A here"); //1 Only one instance for the whole class.
+    System.out.println("Static block from A here"); //1 Only one INSTANCE for the whole class.
   }
 
   {

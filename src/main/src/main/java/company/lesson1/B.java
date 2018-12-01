@@ -4,7 +4,7 @@ public class B extends A {
   int field;
 
   static {
-    System.out.println("Static block from B here"); //1 Only one instance for the whole class.
+    System.out.println("Static block from B here"); //1 Only one INSTANCE for the whole class.
   }
 
   {
