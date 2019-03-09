@@ -1,12 +1,16 @@
 package company.lesson13;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
+//@Ignore
 public class MyArrayListTest {
   private MyArrayList<Integer> myArrayList;
   private MyArrayList<Integer> myArrayListMocked = mock(MyArrayList.class);
@@ -16,14 +20,13 @@ public class MyArrayListTest {
     myArrayList = new MyArrayList();
   }
 
-
-  @Test
+  @Test (groups = "brokenTests")
   public void testIsEmpty() {
     assertNotNull(myArrayList);
     assertEquals(myArrayList.length(), 0);
   }
 
-  @Test
+  @Test (groups = "checkingTests")
   public void testGet() {
     myArrayList.add(1);
     myArrayList.add(2);
@@ -31,7 +34,7 @@ public class MyArrayListTest {
     assertEquals(myArrayList.get(1), (Integer) 2);
   }
 
-  @Test
+  @Test (groups = "checkingTests")
   public void testSet() {
     myArrayList.add(1);
     myArrayList.add(2);
@@ -41,7 +44,7 @@ public class MyArrayListTest {
 //    assertEquals(myArrayList.length(), 3); //check if the element was replaced and the list size was not changed.
   }
 
-  @Test
+  @Test (groups = "checkingTests")
   public void testAdd() {
     myArrayList.add(1);
     myArrayList.add(2);
@@ -49,7 +52,8 @@ public class MyArrayListTest {
     assertTrue(myArrayList.get(myArrayList.length() - 1) == 2); //check if the element was added to the end of the list.
   }
 
-  @Test
+  @Ignore
+  @Test (groups = "brokenTests")
   public void testRemove() {
     myArrayList.add(1);
     myArrayList.add(2);
@@ -61,8 +65,7 @@ public class MyArrayListTest {
     assertEquals(myArrayList.length(), 4); //check if one element is removed.
 //    assertNotEquals(myArrayList.get(2), 2); //check element at specified index was removed.
   }
-
-  @Test(expectedExceptions = IndexOutOfBoundsException.class)
+  @Test(groups = "brokenTests", expectedExceptions = IndexOutOfBoundsException.class)
   public void testRemoveIllegal() {
     myArrayList.add(1);
     myArrayList.add(2);
@@ -73,33 +76,32 @@ public class MyArrayListTest {
 //    myArrayList.remove(-1);
   }
 
-  @Test
+  @Test (groups = "checkingTests")
   public void testClear() {
     myArrayList.add(1);
     myArrayList.clear();
     assertTrue(myArrayList.isEmpty());
   }
 
-  @Test
+  @Test (groups = "brokenTests")
   public void testLength() {
     //    assertEquals(myArrayList.length(), 0);
     myArrayList.add(1);
     assertEquals(myArrayList.length(), 1);
   }
-
-  @Test(expectedExceptions = Exception.class, enabled = true)
+  @Test(groups = "brokenTests", expectedExceptions = Exception.class, enabled = true)
   public void testCheckIndexIllegal() {
     myArrayList.checkIndex(0);
   }
 
-  @Test
+  @Test (groups = "checkingTests")
   public void testCheckIndexLegal() {
     myArrayList.add(1);
     myArrayList.checkIndex(0);
     //check if exception is not thrown - HOW?
   }
 
-  @Test
+  @Test (groups = "checkingTests")
   public void testGetMocked() {
     when(myArrayListMocked.get(1)).thenReturn(5);
     assertEquals((Integer) (5), myArrayListMocked.get(1));

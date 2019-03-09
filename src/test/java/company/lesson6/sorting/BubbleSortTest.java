@@ -1,6 +1,5 @@
 package company.lesson6.sorting;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 

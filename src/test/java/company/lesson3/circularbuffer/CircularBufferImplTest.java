@@ -69,7 +69,7 @@ public class CircularBufferImplTest {
 
 //  // 5. Check if the head position is changed to the next one after putting a value.
 //  //  NOT NEEDED
-//  @Test
+//  @Test1
 //  public void shouldHeadBeNext() {
 //    int previousHeadPosition = circularBuffer.getHead();
 //    circularBuffer.put(1);
@@ -79,7 +79,7 @@ public class CircularBufferImplTest {
 
 //// 6. Check if the head position is next to the tail one after putting a value.
 //  //  NOT NEEDED
-//  @Test
+//  @Test1
 //  public void shouldHeadBeNextToTail() {
 //    int tailPosition = circularBuffer.getTail();
 //    int headPosition = circularBuffer.getHead();
@@ -90,9 +90,9 @@ public class CircularBufferImplTest {
 //    assertThat(headPosition > tailPosition).isTrue(); // Head is greater than tail.
 //  }
 
-//// 7. Test how pitting and getting change head and tail positions.
+//// 7. Test1 how pitting and getting change head and tail positions.
 //  //  NOT NEEDED
-//  @Test
+//  @Test1
 //  public void justTestPositions() {
 //    circularBuffer.put(1);       //+1 Head = 1, Tail = 0
 //    circularBuffer.put(2);       //+2 Head = 2, Tail = 0
@@ -104,7 +104,7 @@ public class CircularBufferImplTest {
 //  }
 
 //  //8. Check buffer size after operations.
-//  @Test
+//  @Test1
 //  public void shouldSizeBeMatched() {
 //    int value = 1;
 //    circularBuffer.put(value++);
@@ -173,7 +173,7 @@ public class CircularBufferImplTest {
   }
 
 //  // 13. Check if all elements are added to the buffer.
-//  @Test
+//  @Test1
 //  public void shouldAllElementsBeAddedToBuffer() {
 //    int limitList = 2;
 //    List<Integer> listToAddFrom = new ArrayList<>(limitList);
@@ -187,7 +187,7 @@ public class CircularBufferImplTest {
 //  }
 
 //  // 14. Check for the exception thrown if add more than buffer size.
-//  @Test
+//  @Test1
 //  public void shouldExceptionBeThrownIfExceedSize() {
 ////    exceptionRule.expect(RuntimeException.class);
 ////    exceptionRule.expectMessage("Buffer is full!");
@@ -202,7 +202,7 @@ public class CircularBufferImplTest {
 //  }
 
   // ******************************************************
-  // Test to add:
+  // Test1 to add:
   //1. наполнение буфера элементами
   //2. размер буфера
 
