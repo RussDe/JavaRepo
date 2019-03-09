@@ -155,7 +155,6 @@ public class CircularBufferImpl<T> implements CircularBuffer<T> {
    */
   public void sort(Comparator<? super T> comparator) {
     //Arrays.sort();
-
   }
 
   /**
